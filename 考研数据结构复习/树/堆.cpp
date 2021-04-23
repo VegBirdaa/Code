@@ -24,7 +24,7 @@ void downAdjust(int low, int high) {
 }
 //初始化堆
 void initHeap(int n) {
-	for (int i = n / 2; i >= 1; i++)
+	for (int i = n / 2; i >= 1; i--)
 		downAdjust(i, n);
 }
 
@@ -52,4 +52,12 @@ void upAdjust(int low, int high) {
 void insert(int  x, int &n){
 	heap[n++]=x;
 	upAdjust(1, n);
+}
+
+//堆排序
+void heapSort(int n){
+	for(int i=n;i>1;i--){
+		swap(heap[1],heap[i]);
+		downAdjust(1,i-1);
+	}
 }

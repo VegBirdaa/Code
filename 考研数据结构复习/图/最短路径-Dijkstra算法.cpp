@@ -1,15 +1,16 @@
 #include<iostream>
+
 using namespace std;
-const int MAXV = 1000; //ÉèÖÃ×î´ó¶¥µãÊı
-const int INF = 1000000000; //ÉèINFÎªÒ»¸öºÜ´óµÄÊı
-int G[MAXV][MAXV]; //¶¨ÒåÍ¼µÄÁÚ½Ó¾ØÕó
-int d[MAXV]; //¶¨ÒåÆğµãµ½¸÷¸öµãµÄ×î¶Ì¾àÀë
-bool vis[MAXV] = { false }; //³õÊ¼»¯ÎªÎ´·ÃÎÊ
+const int MAXV = 1000; //è®¾ç½®æœ€å¤§é¡¶ç‚¹æ•°
+const int INF = 1000000000; //è®¾INFä¸ºä¸€ä¸ªå¾ˆå¤§çš„æ•°
+int G[MAXV][MAXV]; //å®šä¹‰å›¾çš„é‚»æ¥çŸ©é˜µ
+int d[MAXV]; //å®šä¹‰èµ·ç‚¹åˆ°å„ä¸ªç‚¹çš„æœ€çŸ­è·ç¦»
+bool vis[MAXV] = { false }; //åˆå§‹åŒ–ä¸ºæœªè®¿é—®
 
 void Dijkstra(int, int);
 int main()
 {
-	//³õÊ¼»¯ÁÚ½Ó¾ØÕó
+	//åˆå§‹åŒ–é‚»æ¥çŸ©é˜µ
 	fill(G[0], G[0] + MAXV*MAXV, INF);
 	int n = 6;
 	G[0][1] = 12; G[0][2] = 10; G[0][4] = 30; G[0][5] = 100;
@@ -21,9 +22,9 @@ int main()
 	for (int i = 0; i < n; i++)
 		cout << d[i]<<" ";
 }
-void Dijkstra(int s,int n) //sÎªÆğµã¡¢nÎª×Ü½áµãÊı
+void Dijkstra(int s,int n) //sä¸ºèµ·ç‚¹ã€nä¸ºæ€»ç»“ç‚¹æ•°
 {
-	fill(d, d + MAXV, INF); //³õÊ¼¾àÀëÊı×é
+	fill(d, d + MAXV, INF); //åˆå§‹è·ç¦»æ•°ç»„
 	d[s] = 0;
 	for (int i = 0; i < n; i++)
 	{
@@ -35,9 +36,9 @@ void Dijkstra(int s,int n) //sÎªÆğµã¡¢nÎª×Ü½áµãÊı
 				MIN = d[j];
 			}
 		
-		if (u == -1) return; //Ê£ÏÂµÄ½áµãºÍÆğµã²»Á¬Í¨
+		if (u == -1) return; //å‰©ä¸‹çš„ç»“ç‚¹å’Œèµ·ç‚¹ä¸è¿é€š
 		vis[u] = true;
-		//ÒÔuÎªÖĞ½é£¬Ë¢ĞÂ×î¶Ì¾àÀë±í
+		//ä»¥uä¸ºä¸­ä»‹ï¼Œåˆ·æ–°æœ€çŸ­è·ç¦»è¡¨
 		for (int v = 0; v < n; v++)
 			if (vis[v] == false && G[u][v] != INF && d[u] + G[u][v] < d[v])
 				d[v] = d[u] + G[u][v];

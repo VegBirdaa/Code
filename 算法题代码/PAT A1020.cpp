@@ -1,3 +1,6 @@
+/*
+* 题目描述：根据一个树的后续和中序遍历结果 输出其层次遍历结果
+*/
 #include<iostream>
 #include<vector>
 #include<queue>
@@ -15,7 +18,7 @@ struct TreeNode {
 
 vector<int> postOrder;
 vector<int> inOrder;
-
+//根据后续和中序序列创建树
 TreeNode* createTree(int left_post,int right_post,int left_in, int right_in)
 {
     if (left_post > right_post || left_in > right_in) return nullptr;
@@ -30,6 +33,7 @@ TreeNode* createTree(int left_post,int right_post,int left_in, int right_in)
     return root;
 }
 
+//层次遍历
 void levelOrder(TreeNode* root,vector<int> &ans)
 {
     queue<TreeNode> q;

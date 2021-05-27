@@ -37,7 +37,7 @@ int main()
         if(v[i]!=0)
         {
            cout<<" ";
-            printf("%d %.1f",i,v[i]);  //用printf格式化输出
+            printf("%d %.1f",i,v[i]);  //用printf格式化输出   decimal place小数位
         }
     
 }
